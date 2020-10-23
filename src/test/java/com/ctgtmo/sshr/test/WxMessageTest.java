@@ -38,29 +38,29 @@ public class WxMessageTest {
   * @author 王共亮
   * @date 2020年10月23日 上午11:36:56
   */
-  //@Test
+  @Test
   public void pushTemplateMessage() throws ErrorException {
     //创建消息发送实体对象
     TemplateMessage templateMessage = new TemplateMessage();
     //url为空则没有链接地址
     templateMessage.setUrl("www.baidu.com");
     //接收人的openId
-    templateMessage.setTouser("o8ATL6qYwxJ04Abcll0tZgw5v3FM");
+    templateMessage.setTouser("oZAEusxcZPmw-stEL8_Ga_Qc6rVQ");
     //模板id
-    templateMessage.setTemplate_id("onBYEwIV0t-IaB0swYg8Zg3h8mGM6NzPrUBhs84wSWQ");
+    templateMessage.setTemplate_id("cPN2wZ7w0_isFgR6_gfg2wUKvYhCbFTBCy_FZHZvgo4");
     /********************************模板中对应的key*********************************************/
     //设置模板标题
-    TemplateContent first = new TemplateContent("预警", "#D2691E");
+    TemplateContent first = new TemplateContent("您提交的审批，有最新结果！", "#D2691E");
     //设置模板内容
-    TemplateContent keyword1 = new TemplateContent("测试", "#FF0000");
+    TemplateContent keyword1 = new TemplateContent("通用表单", "#FF0000");
     //设置模板位置
-    TemplateContent keyword2 = new TemplateContent("测试推送消息", "#0000FF");
+    TemplateContent keyword2 = new TemplateContent("TYBD-170306-00211", "#0000FF");
     //设置设备
-    TemplateContent keyword3 = new TemplateContent("传感器设备", "#00FF7F");
+    TemplateContent keyword3 = new TemplateContent("审批通过", "#00FF7F");
     //设置时间
-    TemplateContent keyword4 = new TemplateContent("2020-10-22 12:40:42", "#808080");
+    TemplateContent keyword4 = new TemplateContent("2020-10-22 14:40:42", "#808080");
     //设置跳转内容
-    TemplateContent remark = new TemplateContent("点此处查看详情", "#FFA500");
+    TemplateContent remark = new TemplateContent("感谢你的使用", "#FFA500");
     //创建模板信息数据对象
     Data data = new Data();
     data.setFirst(first);
@@ -72,9 +72,9 @@ public class WxMessageTest {
     templateMessage.setData(data);
     String params = JSON.toJSONString(templateMessage);
     //微信公众号appId
-    String appId = "wx3db77fe9d861faf6";
+    String appId = "wx0525e166b8946b29";
     //微信公众号secret
-    String secret = "4287560fda63e970df5cb5b0358ad04c";
+    String secret = "0e8d1003165696b9aa45acd8aa4c3dd6";
     // 返回和封装结果集
     JSONObject jsonObject = wxChatService.sendTemplateMessage(appId, secret, params);
     int code = jsonObject.getInteger("errcode");
@@ -89,7 +89,7 @@ public class WxMessageTest {
   * @author 王共亮
   * @date 2020年10月23日 上午11:36:37
   */
-  @Test
+  //@Test
   public void sendTemplateMessage() throws ErrorException {
     //创建消息发送实体对象
     TemplateMessage templateMessage = new TemplateMessage();
