@@ -1,0 +1,25 @@
+#端口号
+server:
+  port: 8191
+  #访问路径
+  servlet:
+    context-path: /mini
+  connection-timeout: 30000
+#日志配置
+logging:
+  level:
+    org.springframework.web: INFO
+    com.ctgtmo.sshr: DEBUG
+#微信公众号配置
+wx:
+  mp:
+    configs:
+        #微信公众号appId
+      - appId: wx3db77fe9d861faf6
+        #微信公众号secret
+        secret: 4287560fda63e970df5cb5b0358ad04c
+        #微信公众号设置的token
+        token: b427adfae4119d51aae391537684d591
+        #微信公众号设置的aesKey
+        aesKey: p2b5GQfLY6N8BL89w8zbmLIeLgN7pdzUGgFzEmefZdE
+
