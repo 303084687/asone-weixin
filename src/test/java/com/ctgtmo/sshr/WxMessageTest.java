@@ -1,4 +1,4 @@
-package com.ctgtmo.sshr.test;
+package com.ctgtmo.sshr;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ctgtmo.sshr.exception.ErrorException;
 import com.ctgtmo.sshr.model.Data;
+import com.ctgtmo.sshr.model.Miniprogram;
 import com.ctgtmo.sshr.model.TemplateContent;
 import com.ctgtmo.sshr.model.TemplateMessage;
 import com.ctgtmo.sshr.service.WxChatService;
@@ -52,13 +53,13 @@ public class WxMessageTest {
     //设置模板标题
     TemplateContent first = new TemplateContent("您提交的审批，有最新结果！", "#D2691E");
     //设置模板内容
-    TemplateContent keyword1 = new TemplateContent("通用表单", "#FF0000");
+    TemplateContent keyword1 = new TemplateContent("通用表单测试", "#FF0000");
     //设置模板位置
-    TemplateContent keyword2 = new TemplateContent("TYBD-170306-00211", "#0000FF");
+    TemplateContent keyword2 = new TemplateContent("TYBD-170306-00299", "#0000FF");
     //设置设备
     TemplateContent keyword3 = new TemplateContent("审批通过", "#00FF7F");
     //设置时间
-    TemplateContent keyword4 = new TemplateContent("2020-10-22 14:40:42", "#808080");
+    TemplateContent keyword4 = new TemplateContent("2020-10-26 10:40:42", "#808080");
     //设置跳转内容
     TemplateContent remark = new TemplateContent("感谢你的使用", "#FFA500");
     //创建模板信息数据对象
@@ -70,6 +71,11 @@ public class WxMessageTest {
     data.setKeyword4(keyword4);
     data.setRemark(remark);
     templateMessage.setData(data);
+    //小程序参数对象--非必传
+    Miniprogram miniprogram = new Miniprogram();
+    miniprogram.setAppid("wx7c4c3e4664f81fd3");
+    miniprogram.setPagepath("");
+    templateMessage.setMiniprogram(miniprogram);
     String params = JSON.toJSONString(templateMessage);
     //微信公众号appId
     String appId = "wx0525e166b8946b29";
@@ -109,7 +115,7 @@ public class WxMessageTest {
     //设置设备
     TemplateContent keyword3 = new TemplateContent("传感器设备", "#00FF7F");
     //设置时间
-    TemplateContent keyword4 = new TemplateContent("2020-10-22 12:40:42", "#808080");
+    TemplateContent keyword4 = new TemplateContent("2020-10-26 12:40:42", "#808080");
     //设置跳转内容
     TemplateContent remark = new TemplateContent("点此处查看详情", "#FFA500");
     //创建模板信息数据对象
@@ -121,6 +127,12 @@ public class WxMessageTest {
     data.setKeyword4(keyword4);
     data.setRemark(remark);
     templateMessage.setData(data);
+    //小程序参数对象--非必传
+    Miniprogram miniprogram = new Miniprogram();
+    //appid必须跟微信公众号关联，wx7c4c3e4664f81fd3需要换
+    miniprogram.setAppid("wx7c4c3e4664f81fd3");
+    miniprogram.setPagepath("");
+    templateMessage.setMiniprogram(miniprogram);
     String params = JSON.toJSONString(templateMessage);
     // 返回和封装结果集
     JSONObject jsonObject = wxChatService.sendTemplateMessage(params);
